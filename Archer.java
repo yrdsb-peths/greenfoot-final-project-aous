@@ -9,17 +9,11 @@ public class Archer extends Actor
 {
     int mouseDifference;
     GreenfootImage[] archers = new GreenfootImage[6];
-    GreenfootImage idleLeft = new GreenfootImage("images/archersfolder/archers12.png");
-    GreenfootImage idleRight = new GreenfootImage("images/archersfolder/archers12.png");
+
     /**
      * Act - do whatever the Archer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
-    public Archer()
-    {
-        setImage("images/archersfolder/archers1.png");
-    }
+     */  
     
     public void act()
     {
@@ -28,22 +22,25 @@ public class Archer extends Actor
         *    shoot();
         *}
         */
-        MyWorld world = (MyWorld) getWorld();
         MouseInfo mouse = Greenfoot.getMouseInfo();
-        if (Greenfoot.mouseMoved(world))
+        if (Greenfoot.mouseMoved(this.getWorld()))
         {
-            if (getY() - mouse.getY() < 30)
+            if (getY() - mouse.getY() < 25)
             {
                 setImage("images/archersfolder/archers1.png");
-            }
-            
-            if (getY() - mouse.getY() > 30)
+            }else
             {
                 setImage("images/archersfolder/archers12.png");
             }
-            
         }
         
-        
+    }
+    
+    private void shoot()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            archers[i] = new GreenfootImage("images/archersfolder/archers" + i + ".png");
+        }
     }
 }
