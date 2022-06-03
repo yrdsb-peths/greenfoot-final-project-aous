@@ -20,7 +20,10 @@ public class MyWorld extends World
         addObject(x,100,610);
         
         Target y = new Target();
-        addObject(y, 850,635);
+        addObject(y, 750,615);
+        
+        Arrow z = new Arrow();
+        addObject(z, 110, 610);
         
     }
     

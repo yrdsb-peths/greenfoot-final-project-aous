@@ -1,26 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Target here.
+ * Write a description of class arrow here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Target extends Actor
+public class Arrow extends Actor
 {
     /**
-     * Act - do whatever the Target wants to do. This method is called whenever
+     * Act - do whatever the arrow wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    public Target()
+    public Arrow()
     {
         GreenfootImage image = getImage();
-        image.scale(100,120);
+        image.scale(60,60);
         setImage(image);
+        //resizes image
     }
-    
-    public void act()
+    public void act() 
     {
-    }
+        // Add your action code here.
+        
+    }    
 }
