@@ -21,15 +21,28 @@ public class Arrow extends Actor
         //resizes image
     }
     double x = 0;
-    double h = 400;
+    double h = 10;
     double a = 400;
+    double vertexX;
+    double vertexY;
     public void act() 
     {
         // Add your action code here.
         MouseInfo mouse = Greenfoot.getMouseInfo();
-        setLocation(this.getX() + 1,(int) ((a/(h*h))*(x-h)*(x-h) - (a - 600.0)));
-        x += 1;
-
+        
+        
+        if (Greenfoot.mouseClicked(null))
+        {
+            vertexX = mouse.getX() - 110;
+            vertexY = mouse.getY();
+            
+        }
+        if (vertexY != 0)
+        {
+            setLocation(getX() + 1,(int) (((600-vertexY)/(vertexX*vertexX))*(x-vertexX)*(x-vertexX) + vertexY));
+            x += 1;
+        }
+        
     }
         
 }
