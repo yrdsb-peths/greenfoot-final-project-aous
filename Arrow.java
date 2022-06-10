@@ -41,6 +41,13 @@ public class Arrow extends Actor
         {
             setLocation(getX() + 1,(int) (((600-vertexY)/(vertexX*vertexX))*(x-vertexX)*(x-vertexX) + vertexY));
             x += 1;
+            if (getX() < vertexX + 110)
+            {
+                setRotation(-10);
+            }else
+            {
+                setRotation(120);
+            }
         }
         
     }

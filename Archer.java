@@ -35,12 +35,4 @@ public class Archer extends Actor
         }
         
     }
-    
-    private void shoot()
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            archers[i] = new GreenfootImage("images/archersfolder/archers" + i + ".png");
-        }
-    }
 }
