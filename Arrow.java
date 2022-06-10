@@ -50,6 +50,10 @@ public class Arrow extends Actor
             }
         }
         
+        if(getY() > 620)
+        {
+            Greenfoot.stop();
+        }
     }
         
 }
