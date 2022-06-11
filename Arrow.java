@@ -30,17 +30,17 @@ public class Arrow extends Actor
         // Add your action code here.
         MouseInfo mouse = Greenfoot.getMouseInfo();
         
-        
         if (Greenfoot.mouseClicked(null))
         {
             vertexX = mouse.getX() - 110;
             vertexY = mouse.getY();
             
         }
+        int speed = 3;
         if (vertexY != 0)
         {
-            setLocation(getX() + 1,(int) (((600-vertexY)/(vertexX*vertexX))*(x-vertexX)*(x-vertexX) + vertexY));
-            x += 1;
+            setLocation(getX() + speed,(int) (((600-vertexY)/(vertexX*vertexX))*(x-vertexX)*(x-vertexX) + vertexY));
+            x += speed;
             if (getX() < vertexX + 110)
             {
                 setRotation(-10);

@@ -22,5 +22,10 @@ public class Target extends Actor
     
     public void act()
     {
+        if (isTouching(Arrow.class))
+        {
+            removeTouching(Arrow.class);
+            getWorld().removeObject(this);
+        }
     }
 }

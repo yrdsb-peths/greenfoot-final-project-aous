@@ -16,14 +16,15 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(900, 700, 1); 
-        Archer x = new Archer();
-        addObject(x,100,610);
+        Archer archer = new Archer();
+        addObject(archer,100,610);
         
-        Target y = new Target();
-        addObject(y, 750,615);
+        Target target = new Target();
+        addObject(target, 750,615);
         
-        Arrow z = new Arrow();
-        addObject(z, 110, 610);
+        Arrow arrow = new Arrow();
+        addObject(arrow, 110, 610);
+        
         
     }
     

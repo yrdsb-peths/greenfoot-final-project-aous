@@ -34,7 +34,6 @@ public class Archer extends Actor
 
     }
     
-    
     public void act()
     {
         
