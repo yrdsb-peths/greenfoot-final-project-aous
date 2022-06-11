@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitleScreen extends World
 {
     Label titleLabel = new Label("Arrow Man", 100);
+    Label instructions = new Label("Instructions", 40);
+    MouseInfo mouse = Greenfoot.getMouseInfo();
     /**
      * The title screen.
      * 
@@ -17,6 +19,7 @@ public class TitleScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         addObject(titleLabel, 300, 80);
+        addObject(instructions, 150, 200);
         prepare();
     }
 
@@ -27,6 +30,12 @@ public class TitleScreen extends World
         {
             MyWorld gameWorld = new MyWorld();
             Greenfoot.setWorld(gameWorld);
+        }
+        
+        if(Greenfoot.mouseClicked(instructions))
+        {
+            Instructions instructionsWorld = new Instructions();
+            Greenfoot.setWorld(instructionsWorld);
         }
     }
 
