@@ -45,6 +45,7 @@ public class Archer extends Actor
                 shoot();
                 Greenfoot.delay(3);
             }
+            imageIndex = 1;
         }
         
         MouseInfo mouse = Greenfoot.getMouseInfo();
