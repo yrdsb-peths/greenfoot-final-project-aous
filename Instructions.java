@@ -22,6 +22,7 @@ public class Instructions extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         line1 = "Click where you want the apex to be";
+        line2 = "";
         
     }
 }
