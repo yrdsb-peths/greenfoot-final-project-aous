@@ -22,7 +22,7 @@ public class TitleScreen extends World
 
     public void act()
     {
-        // Starts the game when spacebar is pressedd
+        // Starts the game when spacebar is pressed
         if(Greenfoot.isKeyDown("space"))
         {
             MyWorld gameWorld = new MyWorld();

@@ -25,16 +25,16 @@ public class Arrow extends Actor
     double a = 400;
     double vertexX;
     double vertexY;
+    boolean isShooting = false;
     public void act() 
     {
         // Add your action code here.
         MouseInfo mouse = Greenfoot.getMouseInfo();
         
-        if (Greenfoot.mouseClicked(null))
+        if (Greenfoot.mouseClicked(null) && !isShooting)
         {
             vertexX = mouse.getX() - 110;
             vertexY = mouse.getY();
-            
         }
         int speed = 3;
         if (vertexY != 0)
@@ -48,6 +48,7 @@ public class Arrow extends Actor
             {
                 setRotation(120);
             }
+            isShooting = true;
         }
         
         if(getY() > 615)
