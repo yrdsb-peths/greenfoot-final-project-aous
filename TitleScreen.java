@@ -9,6 +9,7 @@ public class TitleScreen extends World
 {
     Label titleLabel = new Label("Arrow Man", 100);
     Label instructions = new Label("Instructions", 40);
+    Label play = new Label("Play", 40);
     MouseInfo mouse = Greenfoot.getMouseInfo();
     /**
      * The title screen.
@@ -20,22 +21,22 @@ public class TitleScreen extends World
         super(600, 400, 1); 
         addObject(titleLabel, 300, 80);
         addObject(instructions, 150, 200);
+        addObject(play, 450, 200);
         prepare();
     }
 
     public void act()
     {
-        // Starts the game when spacebar is pressedd
-        if(Greenfoot.isKeyDown("space"))
-        {
-            MyWorld gameWorld = new MyWorld();
-            Greenfoot.setWorld(gameWorld);
-        }
-        
         if(Greenfoot.mouseClicked(instructions))
         {
             Instructions instructionsWorld = new Instructions();
             Greenfoot.setWorld(instructionsWorld);
+        }
+        
+        if(Greenfoot.mouseClicked(play))
+        {
+            MyWorld gameWorld = new MyWorld();
+            Greenfoot.setWorld(gameWorld);
         }
     }
 
@@ -45,7 +46,5 @@ public class TitleScreen extends World
      */
     private void prepare()
     {
-        Label label = new Label("Press <SPACE> To Start", 40);
-        addObject(label,292,353);
     }
 }
