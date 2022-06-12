@@ -25,6 +25,9 @@ public class MyWorld extends World
         
         Arrow arrow = new Arrow();
         addObject(arrow, 110, 610);
+        
+        Timer timer = new Timer(60);
+        addObject(timer, 90, 90);
     }
     
 }

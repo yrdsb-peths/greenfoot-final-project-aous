@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Write a description of class Instructions here.
  * 
@@ -8,11 +7,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Instructions extends World
 {
-    String line1;
-    String line2;
-    String line3;
-    String line4;
-    String line5;
+    Label instructions;
+    int lineHeight = 50;
     /**
      * Constructor for objects of class Instructions.
      * 
@@ -21,8 +17,18 @@ public class Instructions extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        line1 = "Click where you want the apex to be";
-        line2 = "";
+        String[] line = {"Click where you want the apex to be",
+        "Shoot as many targets as you can before", "the timer runs out",
+        "Shoot the time to add to the timer",
+        "Your final score shows how many targets", "you hit in the time",
+        "Have fun ;)"};
         
+        for (int i = 0; i < line.length; i++)
+        {
+            instructions = new Label(line[i], 30);
+            instructions.setFillColor(Color.BLACK);
+            instructions.setLineColor(Color.BLACK);
+            addObject(instructions, getWidth()/2, 50 + lineHeight*i);
+        }
     }
 }
