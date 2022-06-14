@@ -26,7 +26,7 @@ public class Instructions extends World
         for (int i = 0; i < line.length; i++)
         {
             instructions = new Label(line[i], 30);
-            instructions.setFillColor(Color.BLACK);
+            instructions.setFillColor(Color.WHITE);
             instructions.setLineColor(Color.BLACK);
             addObject(instructions, getWidth()/2, 50 + lineHeight*i);
         }

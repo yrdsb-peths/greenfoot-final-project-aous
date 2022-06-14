@@ -16,7 +16,7 @@ public class Target extends Actor
     public Target()
     {
         GreenfootImage image = getImage();
-        image.scale(100,120);
+        image.scale(50,50);
         setImage(image);
     }
     

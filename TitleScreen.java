@@ -22,7 +22,6 @@ public class TitleScreen extends World
         addObject(titleLabel, 300, 80);
         addObject(instructions, 150, 200);
         addObject(play, 450, 200);
-        prepare();
     }
 
     public void act()
@@ -44,7 +43,4 @@ public class TitleScreen extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    private void prepare()
-    {
-    }
 }

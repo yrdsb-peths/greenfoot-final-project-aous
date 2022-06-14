@@ -21,7 +21,7 @@ public class MyWorld extends World
         addObject(archer,100,610);
         
         Target target = new Target();
-        addObject(target, 750,615);
+        addObject(target, 750,640);
         
         Arrow arrow = new Arrow();
         addObject(arrow, 110, 610);
