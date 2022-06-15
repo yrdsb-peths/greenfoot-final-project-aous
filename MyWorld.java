@@ -12,6 +12,10 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    SimpleTimer timer;
+    Label x;
+    int spawnX;
+    int timeLeft;
     public MyWorld()
     { 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -26,8 +30,26 @@ public class MyWorld extends World
         Arrow arrow = new Arrow();
         addObject(arrow, 110, 610);
         
-        Timer timer = new Timer(60);
-        addObject(timer, 90, 90);
+        timer = new SimpleTimer();
+        
+        x = new Label(60, 100);
+        addObject(x, 100, 100);
     }
     
+    public void act()
+    {
+        timeLeft = 60 - (int) timer.millisElapsed()/1000;
+        x.setValue(timeLeft);
+        
+        if (getObjects(Target.class).size() == 0)
+        {
+            spawnX = (int) (Math.random() * 300);
+            addObject(new Target(), spawnX + 200, 640);
+        }
+        
+        if (timeLeft == 0)
+        {
+            Greenfoot.stop();
+        }
+    }
 }
