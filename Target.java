@@ -12,7 +12,7 @@ public class Target extends Actor
      * Act - do whatever the Target wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
+    Arrow arrow;
     public Target()
     {
         GreenfootImage image = getImage();
@@ -24,8 +24,10 @@ public class Target extends Actor
     {
         if (isTouching(Arrow.class))
         {
-            removeTouching(Arrow.class);
             getWorld().removeObject(this);
+            Greenfoot.delay(200);
+            arrow = new Arrow();
+            getWorld().addObject(arrow, 110, 610);
         }
     }
 }
