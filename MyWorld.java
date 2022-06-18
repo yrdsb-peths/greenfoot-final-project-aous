@@ -40,6 +40,7 @@ public class MyWorld extends World
         
         z = new Label(score, 100);
         addObject(z, 700, 100);
+        
     }
     
     public void act()
@@ -74,5 +75,6 @@ public class MyWorld extends World
             TitleScreen titleScreenWorld = new TitleScreen();
             Greenfoot.setWorld(titleScreenWorld);
         }
+        
     }
 }

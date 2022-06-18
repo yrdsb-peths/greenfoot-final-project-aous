@@ -11,6 +11,7 @@ public class TitleScreen extends World
     Label instructions = new Label("Instructions", 40);
     Label play = new Label("Play", 40);
     MouseInfo mouse = Greenfoot.getMouseInfo();
+    GreenfootSound mythbustSound = new GreenfootSound("sounds/Mythbusters - Theme Song (HD).mp3");
     /**
      * The title screen.
      * 
@@ -36,6 +37,7 @@ public class TitleScreen extends World
         {
             MyWorld gameWorld = new MyWorld();
             Greenfoot.setWorld(gameWorld);
+            mythbustSound.play();
         }
     }
 
