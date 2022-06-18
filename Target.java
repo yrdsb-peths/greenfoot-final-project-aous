@@ -25,9 +25,6 @@ public class Target extends Actor
         if (isTouching(Arrow.class))
         {
             getWorld().removeObject(this);
-            Greenfoot.delay(200);
-            arrow = new Arrow();
-            getWorld().addObject(arrow, 110, 610);
         }
     }
 }

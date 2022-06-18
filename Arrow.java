@@ -56,5 +56,9 @@ public class Arrow extends Actor
             vertexY = 0;
         }
     }
-        
+    
+    public boolean isTouchingTarget()
+    {
+        return this.isTouching(Target.class);
+    }
 }

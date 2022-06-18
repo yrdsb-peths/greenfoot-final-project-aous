@@ -17,6 +17,8 @@ public class MyWorld extends World
     int spawnX;
     int timeLeft;
     Arrow arrow;
+    int score = 0;
+    Label z;
     public MyWorld()
     { 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -35,6 +37,9 @@ public class MyWorld extends World
         
         x = new Label(60, 100);
         addObject(x, 100, 100);
+        
+        z = new Label(score, 100);
+        addObject(z, 700, 100);
     }
     
     public void act()
@@ -47,12 +52,18 @@ public class MyWorld extends World
             removeObject(arrow);
             arrow = new Arrow();
             addObject(arrow, 110, 610);
+            
         }
         
         if (getObjects(Target.class).size() == 0)
         {
             spawnX = (int) (Math.random() * 300);
-            addObject(new Target(), spawnX + 200, 640);
+            addObject(new Target(), spawnX + 300, 640);
+            removeObject(arrow);
+            arrow = new Arrow();
+            addObject(arrow, 110, 610);
+            score++;
+            z.setValue(score);
             //adds new target in random location
         }
         
