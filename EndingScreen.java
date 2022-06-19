@@ -8,15 +8,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class EndingScreen extends World
 {
-    /**
-     * Constructor for objects of class EndingScreen.
-     * 
-     */
-    Label score;
-    public EndingScreen()
+    int score;
+    Label finalScore;
+    Label menuButton;
+    public EndingScreen(int score)
     {
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
-        //score = new Label(MyWorld.getScore());
+        super(600,400,1);
+        this.score = score;
+        finalScore = new Label("Your Final Score Was: " + score,50);
+        addObject(finalScore, 260,100);
+        Label menuButton = new Label("Back To Main Menu", 50);
+        addObject(menuButton, 220, 240);
+    }
+    
+    public void act()
+    {
+        if (Greenfoot.mouseClicked(menuButton))
+        {
+            TitleScreen menu = new TitleScreen();
+            Greenfoot.setWorld(menu);
+        }
     }
 }

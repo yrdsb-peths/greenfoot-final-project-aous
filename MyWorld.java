@@ -45,7 +45,7 @@ public class MyWorld extends World
     
     public void act()
     {
-        timeLeft = 60 - (int) timer.millisElapsed()/1000;
+        timeLeft = 5 - (int) timer.millisElapsed()/1000;
         x.setValue(timeLeft);
         
         if (arrow.getY() >= 615)
@@ -71,10 +71,11 @@ public class MyWorld extends World
         if (timeLeft == 0)
         {
             Greenfoot.delay(100);
-            Greenfoot.stop();
-            TitleScreen titleScreenWorld = new TitleScreen();
-            Greenfoot.setWorld(titleScreenWorld);
+            EndingScreen endWorld = new EndingScreen(score);
+            Greenfoot.setWorld(endWorld);
         }
         
     }
+    
+    
 }
