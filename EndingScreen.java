@@ -12,9 +12,11 @@ public class EndingScreen extends World
      * Constructor for objects of class EndingScreen.
      * 
      */
+    Label score;
     public EndingScreen()
     {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
+        //score = new Label(MyWorld.getScore());
     }
 }
