@@ -11,6 +11,7 @@ public class EndingScreen extends World
     int score;
     Label finalScore;
     Label menuButton;
+    GreenfootSound marioSound = new GreenfootSound("Super_Mario_Bros.wav");
     public EndingScreen(int score)
     {
         super(600,400,1);
@@ -19,6 +20,7 @@ public class EndingScreen extends World
         addObject(finalScore, 260,100);
         Label menuButton = new Label("Back To Main Menu", 50);
         addObject(menuButton, 220, 240);
+        marioSound.play();
     }
     
     public void act()
@@ -27,6 +29,7 @@ public class EndingScreen extends World
         {
             TitleScreen menu = new TitleScreen();
             Greenfoot.setWorld(menu);
+            marioSound.stop();
         }
     }
 }
