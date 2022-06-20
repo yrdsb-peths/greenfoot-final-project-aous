@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class arrow here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Aous Alomari and Nicholas Wu
+ * June 20 2022
  */
 public class Arrow extends Actor
 {
@@ -55,10 +55,9 @@ public class Arrow extends Actor
         {
             vertexY = 0;
         }
+        
+        
     }
     
-    public boolean isTouchingTarget()
-    {
-        return this.isTouching(Target.class);
-    }
+    
 }

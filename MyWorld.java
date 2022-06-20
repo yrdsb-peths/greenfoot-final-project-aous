@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class MyWorld here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Aous Alomari and Nicholas Wu
+ * June 20 2022
  */
 public class MyWorld extends World
 {
@@ -15,10 +15,14 @@ public class MyWorld extends World
     SimpleTimer timer;
     Label x;
     int spawnX;
-    int timeLeft;
+    int timeLeft = 60;
     Arrow arrow;
     int score = 0;
     Label z;
+    Label powerUp;
+    SimpleTimer powerUpTimer;
+    int powerUpValue = 0;
+    int additionalTime;
     public MyWorld()
     { 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -41,13 +45,17 @@ public class MyWorld extends World
         z = new Label(score, 100);
         addObject(z, 700, 100);
         
+        powerUpTimer = new SimpleTimer();
+        powerUp = new Label(20, 100);
+        addObject(powerUp, 100, 200);
     }
     
     public void act()
     {
-        timeLeft = 5 - (int) timer.millisElapsed()/1000;
+        timeLeft = 60 - (int) timer.millisElapsed()/1000 + additionalTime;
         x.setValue(timeLeft);
-        
+        powerUpValue = 5 - (int) powerUpTimer.millisElapsed()/1000;
+        powerUp.setValue(powerUpValue);
         if (arrow.getY() >= 615)
         {
             removeObject(arrow);
@@ -73,6 +81,13 @@ public class MyWorld extends World
             Greenfoot.delay(100);
             EndingScreen endWorld = new EndingScreen(score);
             Greenfoot.setWorld(endWorld);
+        }
+        powerUp.move(1);
+        
+        if (powerUp.isTouchingArrow())
+        {
+           additionalTime += powerUpValue;
+           powerUp.setLocation((int) (Math.random() * 300) + 300, powerUp.getY());
         }
         
     }

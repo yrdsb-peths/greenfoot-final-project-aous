@@ -22,4 +22,6 @@ comment6.text=\r\n\ Sets\ the\ fill\ color\ of\ the\ text\r\n\ \r\n\ @param\ fil
 comment7.params=
 comment7.target=void\ updateImage()
 comment7.text=\r\n\ Update\ the\ image\ on\ screen\ to\ show\ the\ current\ value.\r\n
-numComments=8
+comment8.params=
+comment8.target=boolean\ isTouchingArrow()
+numComments=9

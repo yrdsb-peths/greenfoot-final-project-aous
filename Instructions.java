@@ -2,8 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Instructions here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Aous Alomari and Nicholas Wu
+ * June 20 2022
  */
 public class Instructions extends World
 {
