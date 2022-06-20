@@ -94,5 +94,8 @@ public class Label extends Actor
     public boolean isTouchingArrow()
     {
         return this.isTouching(Arrow.class);
+        /*method for when Label is touching arrow because the isTouching method
+         * cannot be called in MyWorld
+         */
     }
 }

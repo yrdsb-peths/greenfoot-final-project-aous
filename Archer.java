@@ -20,6 +20,7 @@ public class Archer extends Actor
         {
             archers[i] = new GreenfootImage("images/archersfolder/archers" + i + ".png");
         }
+        //sets values for the archers list
         setImage(archers[0]);
     }
 
@@ -31,7 +32,7 @@ public class Archer extends Actor
     {
         setImage(archers[imageIndex]);
         imageIndex++;
-
+        
     }
     
     public void act()
@@ -43,9 +44,11 @@ public class Archer extends Actor
             {
                 shoot();
                 Greenfoot.delay(3);
+                //plays images the archers list when ther archer shoots
             }
             imageIndex = 1;
             bowSound.play();
+            //plays bow sound when archer shoots
         }
         
         MouseInfo mouse = Greenfoot.getMouseInfo();

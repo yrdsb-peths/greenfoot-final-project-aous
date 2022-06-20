@@ -25,6 +25,7 @@ public class Instructions extends World
         "Shoot the time to add to the timer",
         "Your final score shows how many targets", "you hit in the time",
         "Have fun ;)"};
+        //a list of strings that will be displayed when the instruction world is created
         
         for (int i = 0; i < line.length; i++)
         {

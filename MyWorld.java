@@ -13,7 +13,7 @@ public class MyWorld extends World
      * 
      */
     SimpleTimer timer;
-    Label x;
+    Label time;
     int spawnX;
     int timeLeft = 60;
     Arrow arrow;
@@ -42,8 +42,8 @@ public class MyWorld extends World
         
         timer = new SimpleTimer();
         
-        x = new Label(60, 100);
-        addObject(x, 100, 100);
+        time = new Label(60, 100);
+        addObject(time, 100, 100);
         
         z = new Label(score, 100);
         addObject(z, 700, 100);
@@ -57,13 +57,16 @@ public class MyWorld extends World
     
     public void act()
     {
-        timeLeft = 60 - (int) timer.millisElapsed()/1000 + additionalTime;
-        x.setValue(timeLeft);
+        timeLeft = 20 - (int) timer.millisElapsed()/1000 + additionalTime;
+        time.setValue(timeLeft);
+        //sets value of the amount of time left
         powerUpValue = newPowerUpValue - (int) powerUpTimer.millisElapsed()/1000;
         powerUp.setValue(powerUpValue);
-        if (arrow.getY() >= 615 || arrow.getX() >= getWidth())
+        //updates the value of the powerUp
+        if (arrow.getY() >= 615 || arrow.getX() >= getWidth() - 10)
         {
             arrowInitialize();
+            //initializes arrow if it is out of bounds
         }
         
         if (getObjects(Target.class).size() == 0)
@@ -73,7 +76,7 @@ public class MyWorld extends World
             arrowInitialize();
             score++;
             z.setValue(score);
-            //adds new target in random location
+            //adds new target in random location and initializes arrow
         }
         
         if (timeLeft == 0)
@@ -81,7 +84,50 @@ public class MyWorld extends World
             Greenfoot.delay(100);
             EndingScreen endWorld = new EndingScreen(score);
             Greenfoot.setWorld(endWorld);
+            //changes world to ending screen if time runs out
         }
+        
+        setDirection();
+        //method for direction of power up
+        
+        if (powerUp.isTouchingArrow())
+        {
+           additionalTime += powerUpValue;
+           arrowInitialize();
+           powerUpInitialize();
+           /*initializes the power up and arrow
+            * while increasing the time
+            */
+        }
+        
+        if (powerUpValue == 0)
+        {
+            powerUpInitialize();
+            //resets value of power up and location when the time is 0
+        }
+        
+        
+    }
+    
+    public void powerUpInitialize()
+    {
+        powerUp.setLocation((int) (Math.random() * 600) + 200, (int) (Math.random() * 450) + 50);
+        powerUpTimer = new SimpleTimer();
+        powerUpValue = (int) (Math.random() * 15);
+        newPowerUpValue = powerUpValue;
+    }
+    //resets value and location of the power up
+    
+    public void arrowInitialize()
+    {
+        removeObject(arrow);
+        arrow = new Arrow();
+        addObject(arrow, 110, 610);
+    }
+    //resets the arrow
+    
+    public void setDirection()
+    {
         
         if(powerUp.getX() >= powerUp.getWorld().getWidth() - 10)
         {
@@ -90,7 +136,6 @@ public class MyWorld extends World
         {
             timerForward = true;
         }
-        
         if (powerUp.getY() <= 50)
         {
             timerUp = false;
@@ -98,40 +143,8 @@ public class MyWorld extends World
         {
             timerUp = true;
         }
-        setDirection();        
+        //changes the boolean values of whether the power up timer should be moving forward or up
         
-        if (powerUp.isTouchingArrow())
-        {
-           additionalTime += powerUpValue;
-           arrowInitialize();
-           powerUpInitialize();
-        }
-        
-        if (powerUpValue == 0)
-        {
-            powerUpInitialize();
-        }
-        
-        
-    }
-    
-    public void powerUpInitialize()
-    {
-        powerUp.setLocation((int) (Math.random() * 600) + 200, powerUp.getY());
-        powerUpTimer = new SimpleTimer();
-        powerUpValue = (int) (Math.random() * 15);
-        newPowerUpValue = powerUpValue;
-    }
-    
-    public void arrowInitialize()
-    {
-        removeObject(arrow);
-        arrow = new Arrow();
-        addObject(arrow, 110, 610);
-    }
-    
-    public void setDirection()
-    {
         if (timerForward && timerUp)
         {
             powerUp.setLocation(powerUp.getX() + powerUpValue, powerUp.getY() - powerUpValue);
@@ -145,5 +158,6 @@ public class MyWorld extends World
         {
             powerUp.setLocation(powerUp.getX() - powerUpValue, powerUp.getY() + powerUpValue);
         }
+        //changes the direction of the power up timer
     }
 }

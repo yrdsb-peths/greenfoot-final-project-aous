@@ -18,6 +18,7 @@ public class Target extends Actor
         GreenfootImage image = getImage();
         image.scale(50,50);
         setImage(image);
+        //Target constructor
     }
     
     public void act()
@@ -25,6 +26,7 @@ public class Target extends Actor
         if (isTouching(Arrow.class))
         {
             getWorld().removeObject(this);
+            //removes target when arrow touches
         }
     }
 }
