@@ -21,7 +21,8 @@ public class MyWorld extends World
     Label z;
     Label powerUp;
     SimpleTimer powerUpTimer;
-    int powerUpValue = 0;
+    int powerUpValue = 5;
+    int newPowerUpValue;
     int additionalTime;
     public MyWorld()
     { 
@@ -47,30 +48,25 @@ public class MyWorld extends World
         
         powerUpTimer = new SimpleTimer();
         powerUp = new Label(20, 100);
-        addObject(powerUp, 100, 200);
+        addObject(powerUp, 200, 200);
     }
     
     public void act()
     {
         timeLeft = 60 - (int) timer.millisElapsed()/1000 + additionalTime;
         x.setValue(timeLeft);
-        powerUpValue = 5 - (int) powerUpTimer.millisElapsed()/1000;
+        powerUpValue = newPowerUpValue - (int) powerUpTimer.millisElapsed()/1000;
         powerUp.setValue(powerUpValue);
         if (arrow.getY() >= 615)
         {
-            removeObject(arrow);
-            arrow = new Arrow();
-            addObject(arrow, 110, 610);
-            
+            arrowInitialize();
         }
         
         if (getObjects(Target.class).size() == 0)
         {
             spawnX = (int) (Math.random() * 300);
             addObject(new Target(), spawnX + 300, 640);
-            removeObject(arrow);
-            arrow = new Arrow();
-            addObject(arrow, 110, 610);
+            arrowInitialize();
             score++;
             z.setValue(score);
             //adds new target in random location
@@ -87,10 +83,29 @@ public class MyWorld extends World
         if (powerUp.isTouchingArrow())
         {
            additionalTime += powerUpValue;
-           powerUp.setLocation((int) (Math.random() * 300) + 300, powerUp.getY());
+           arrowInitialize();
+           powerUpInitialize();
+        }
+        
+        if (powerUpValue == 0)
+        {
+            powerUpInitialize();
         }
         
     }
     
+    public void powerUpInitialize()
+    {
+        powerUp.setLocation((int) (Math.random() * 600) + 200, powerUp.getY());
+        powerUpTimer = new SimpleTimer();
+        powerUpValue = (int) (Math.random() * 10);
+        newPowerUpValue = powerUpValue;
+    }
     
+    public void arrowInitialize()
+    {
+        removeObject(arrow);
+        arrow = new Arrow();
+        addObject(arrow, 110, 610);
+    }
 }
