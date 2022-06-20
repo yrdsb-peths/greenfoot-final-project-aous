@@ -36,7 +36,7 @@ public class Arrow extends Actor
             vertexX = mouse.getX() - 110;
             vertexY = mouse.getY();
         }
-        int speed = 3;
+        int speed = 6;
         if (vertexY != 0)
         {
             setLocation(getX() + speed,(int) (((600-vertexY)/(vertexX*vertexX))*(x-vertexX)*(x-vertexX) + vertexY));

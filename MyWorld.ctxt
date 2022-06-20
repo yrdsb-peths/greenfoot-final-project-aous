@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=void\ powerUpInitialize()
 comment4.params=
 comment4.target=void\ arrowInitialize()
-numComments=5
+comment5.params=
+comment5.target=void\ setDirection()
+numComments=6

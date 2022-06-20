@@ -24,6 +24,8 @@ public class MyWorld extends World
     int powerUpValue = 5;
     int newPowerUpValue;
     int additionalTime;
+    boolean timerForward;
+    boolean timerUp;
     public MyWorld()
     { 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -48,6 +50,8 @@ public class MyWorld extends World
         
         powerUpTimer = new SimpleTimer();
         powerUp = new Label(20, 100);
+        timerForward = true;
+        timerUp = true;
         addObject(powerUp, 200, 200);
     }
     
@@ -57,7 +61,7 @@ public class MyWorld extends World
         x.setValue(timeLeft);
         powerUpValue = newPowerUpValue - (int) powerUpTimer.millisElapsed()/1000;
         powerUp.setValue(powerUpValue);
-        if (arrow.getY() >= 615)
+        if (arrow.getY() >= 615 || arrow.getX() >= getWidth())
         {
             arrowInitialize();
         }
@@ -78,7 +82,23 @@ public class MyWorld extends World
             EndingScreen endWorld = new EndingScreen(score);
             Greenfoot.setWorld(endWorld);
         }
-        powerUp.move(1);
+        
+        if(powerUp.getX() >= powerUp.getWorld().getWidth() - 10)
+        {
+            timerForward = false;
+        }else if (powerUp.getX() <= 150)
+        {
+            timerForward = true;
+        }
+        
+        if (powerUp.getY() <= 50)
+        {
+            timerUp = false;
+        }else if (powerUp.getY() >= 600)
+        {
+            timerUp = true;
+        }
+        setDirection();        
         
         if (powerUp.isTouchingArrow())
         {
@@ -92,13 +112,14 @@ public class MyWorld extends World
             powerUpInitialize();
         }
         
+        
     }
     
     public void powerUpInitialize()
     {
         powerUp.setLocation((int) (Math.random() * 600) + 200, powerUp.getY());
         powerUpTimer = new SimpleTimer();
-        powerUpValue = (int) (Math.random() * 10);
+        powerUpValue = (int) (Math.random() * 15);
         newPowerUpValue = powerUpValue;
     }
     
@@ -107,5 +128,22 @@ public class MyWorld extends World
         removeObject(arrow);
         arrow = new Arrow();
         addObject(arrow, 110, 610);
+    }
+    
+    public void setDirection()
+    {
+        if (timerForward && timerUp)
+        {
+            powerUp.setLocation(powerUp.getX() + powerUpValue, powerUp.getY() - powerUpValue);
+        }else if (!timerForward && timerUp)
+        {
+            powerUp.setLocation(powerUp.getX() - powerUpValue, powerUp.getY() - powerUpValue);
+        }else if (timerForward && !timerUp)
+        {
+            powerUp.setLocation(powerUp.getX() + powerUpValue, powerUp.getY() + powerUpValue);
+        }else
+        {
+            powerUp.setLocation(powerUp.getX() - powerUpValue, powerUp.getY() + powerUpValue);
+        }
     }
 }
