@@ -52,6 +52,7 @@ public class MyWorld extends World
         powerUp = new Label(20, 100);
         timerForward = true;
         timerUp = true;
+        //timer power up moving forward and up
         addObject(powerUp, 200, 200);
     }
     
@@ -113,7 +114,7 @@ public class MyWorld extends World
     {
         powerUp.setLocation((int) (Math.random() * 600) + 200, (int) (Math.random() * 450) + 50);
         powerUpTimer = new SimpleTimer();
-        powerUpValue = (int) (Math.random() * 15);
+        powerUpValue = (int) (Math.random() * 7);
         newPowerUpValue = powerUpValue;
     }
     //resets value and location of the power up
