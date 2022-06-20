@@ -9,7 +9,7 @@ public class Archer extends Actor
 {
     int mouseDifference;
     GreenfootImage[] archers = new GreenfootImage[6];
-
+    GreenfootSound bowSound = new GreenfootSound("Bow_Shot.wav");
     /**
      * Act - do whatever the Archer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -45,6 +45,7 @@ public class Archer extends Actor
                 Greenfoot.delay(3);
             }
             imageIndex = 1;
+            bowSound.play();
         }
         
         MouseInfo mouse = Greenfoot.getMouseInfo();
